@@ -1,0 +1,36 @@
+.container{
+    width: 95vw;
+    background-color: bisque;
+    margin: auto;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    color: white;
+    height: 85vh;
+    overflow: auto;
+}
+.form{
+    width: 30%; 
+    margin: auto;
+    background-color: brown;    
+    margin-top: 10px;
+}
+form{
+    display: flex; 
+    flex-direction: column; 
+    padding: 2rem;
+}
+
+.input{
+    margin-bottom: 1rem;
+}
+
+.input input{
+    display: block;
+}
+
+.button input{
+    padding: 0.5rem;
+    text-decoration: none;
+    border-radius: 3px;
+    border: none;
+}
