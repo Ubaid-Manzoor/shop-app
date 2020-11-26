@@ -1,0 +1,52 @@
+    <%- include('../includes/head.ejs') %> 
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/form.css">
+</head>
+    <body>
+        <header>
+            <%- include('../includes/navigation.ejs') %> 
+        </header>
+        <main>
+            <div class="form-container">
+                <div class="message">
+                    <span class="err-message"> <%= errorMessage %> </span>
+                    <span class="succes-message"> <%= successMessage %>  </span>
+                </div>
+                <form action="/sign-up" method="post" id="sign-up-form">
+                    <div class="label-container">
+                        <label>
+                            <span> Full Name </span>
+                            <input type="text" name="name" value="<%= name %> ">
+                        </label>
+                    </div>
+                    <div class="label-container">
+                        <label>
+                            <span> Email </span>
+                            <input type="text" name="email" value="<%= email %> ">
+                        </label>
+                        <span class="error"> <%= emailError %> </span>
+                    </div>
+                    <div class="label-container">
+                        <label>
+                            <span> Password </span>
+                            <input type="text" name="password" value="<%= password %> ">
+                        </label>
+                        <span class="error"> <%= passwordError %> </span>
+                    </div>
+                    <div class="label-container">
+                        <label>
+                            <span> Confirm Password </span>
+                            <input type="password" name="confirmPassword" value="<%= confirmPassword %>">
+                        </label>
+                        <span class="error"> <%= confirmPasswordError %> </span>
+                    </div>
+                    <button type="submit" form="sign-up-form">Submit</button>
+                </form>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+    </body>
+<%- include('../includes/end.ejs') %>

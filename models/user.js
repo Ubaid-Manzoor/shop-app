@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -25,22 +27,26 @@ const userSchema = new mongoose.Schema({
         trim: true,
         minlength: 7
     },
-    type: {
-        type: String,
-        require: true,
-        trim: true,
-        validate(value){
-            if(!['owner', 'customer', 'admin'].includes(value)){
-                throw new Error('not valid type');
-            }
-        }
-    },
     tokens: [{
-        type: String,
-        required: true
+        token: {
+            type: String,
+            require: true
+        }
     }]
 });
 
+
+
+
+userSchema.methods.generateAuthToken = async function(){
+    const user = this;
+    const token = jwt.sign({ _id: user._id.toString()}, "thisissecret",{
+        expiresIn: '1 day'
+    });
+    user.tokens.push({ token });
+
+    return token;
+}
 
 const User = mongoose.model('User', userSchema);
 
